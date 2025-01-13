@@ -13,7 +13,7 @@ namespace backend.dtos.stock
         public double beta { get; set; }
         public int volAvg { get; set; }
         public long mktCap { get; set; }
-        public int lastDiv { get; set; }
+        public decimal lastDiv { get; set; } //before was int, but the value fetched from the API was matching only double
         public string range { get; set; }
         public double changes { get; set; }
         public string companyName { get; set; }

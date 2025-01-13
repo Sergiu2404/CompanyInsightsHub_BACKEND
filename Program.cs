@@ -85,6 +85,17 @@ builder.Services.AddAuthentication(options => {
 });
 
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // Add the React app origin
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials(); // Allow cookies, credentials, etc.
+    });
+});
+
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
@@ -110,9 +121,10 @@ app.UseCors(cors => cors
     .AllowAnyMethod()
     .AllowAnyHeader()
     .AllowCredentials()
+    .WithOrigins("http://localhost:3000")
     //.WithOrigins("https://localhost:5212")
-    .SetIsOriginAllowed(origin => true)
-);
+    .SetIsOriginAllowed(origin => true));
+
 
 app.UseAuthentication();
 app.UseAuthorization();

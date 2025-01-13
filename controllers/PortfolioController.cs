@@ -51,6 +51,7 @@ namespace backend.controllers
             if(stock == null)
             {
                 stock = await _finModelingPrepAPIService.FindStockBySymbolAsync(symbol);
+                Console.WriteLine("portf ctrl stock: ", stock);
                 if(stock == null)
                 {
                     return BadRequest("Stock does not exist");

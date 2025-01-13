@@ -22,6 +22,8 @@ namespace backend.services
         {
             try{
                 var result = await _httpClient.GetAsync($"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={_configuration["FinModelPrepKey"]}");
+                //var result = await _httpClient.GetAsync("https://financialmodelingprep.com/api/v3/profile/MSFT?apikey=EWuWTAQL1XH0h9olxaxbtmDyUSKfTmYd");
+                //Console.WriteLine("data fetched from the FinAPI: ", result.Content.ReadAsStringAsync());
 
                 if(result.IsSuccessStatusCode)
                 {
